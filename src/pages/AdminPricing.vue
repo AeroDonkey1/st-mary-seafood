@@ -285,6 +285,9 @@ const fetchItems = async () => {
 }
 
 const addItem = async () => {
+  console.log('Add Item button clicked!')
+  console.log('API Base URL:', import.meta.env.VITE_API_BASE)
+  
   const newItem = {
     name: 'New Seafood Item',
     description: 'Fresh and delicious seafood',
@@ -297,19 +300,29 @@ const addItem = async () => {
   }
 
   try {
+    console.log('Sending new item:', newItem)
     const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/pricing`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newItem)
     })
 
+    console.log('Response status:', res.status)
+    console.log('Response ok:', res.ok)
+
     if (res.ok) {
       const saved = await res.json()
+      console.log('Saved item:', saved)
       items.value.push(saved)
       showSuccessMessage()
+    } else {
+      const errorText = await res.text()
+      console.error('Server error:', errorText)
+      alert(`Error adding item: ${res.status} - ${errorText}`)
     }
   } catch (error) {
     console.error('Error adding item:', error)
+    alert(`Network error: ${error.message}`)
   }
 }
 

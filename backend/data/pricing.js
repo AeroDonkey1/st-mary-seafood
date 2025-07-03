@@ -1,19 +1,56 @@
 import express from 'express'
 import { Low } from 'lowdb'
-import { JSONFile } from 'lowdb/node'
+import { Memory } from 'lowdb'
 import { nanoid } from 'nanoid'
 
-const file = './backend/data/pricing.json'
-const adapter = new JSONFile(file)
+// Use in-memory storage for Render deployment
+const adapter = new Memory()
 const db = new Low(adapter, { items: [] })
 
 const router = express.Router()
 
+// Default seafood items
+const defaultItems = [
+  {
+    id: 'crawfish-1',
+    name: 'Live Crawfish',
+    description: 'Fresh Louisiana crawfish, caught daily from local waters',
+    pricePerLb: 4.99,
+    inStock: true,
+    featured: true,
+    seasonal: false,
+    category: 'crawfish',
+    image: '/images/images-33.webp'
+  },
+  {
+    id: 'crab-1',
+    name: 'Blue Crab',
+    description: 'Premium blue crabs from the Gulf Coast',
+    pricePerLb: 8.99,
+    inStock: true,
+    featured: false,
+    seasonal: false,
+    category: 'crab',
+    image: '/images/images-35.webp'
+  },
+  {
+    id: 'shrimp-1',
+    name: 'Gulf Shrimp',
+    description: 'Wild-caught Gulf shrimp, medium size',
+    pricePerLb: 12.99,
+    inStock: true,
+    featured: true,
+    seasonal: false,
+    category: 'shrimp',
+    image: '/images/images-37.webp'
+  }
+]
+
 // Setup wrapper function to init and return router
 export default (async () => {
   await db.read()
-  if (!db.data || !db.data.items) {
-    db.data = { items: [] }
+  if (!db.data || !db.data.items || db.data.items.length === 0) {
+    db.data = { items: defaultItems }
     await db.write()
   }
 
@@ -25,7 +62,7 @@ export default (async () => {
 
   // POST new
   router.post('/', async (req, res) => {
-    const { name, description, pricePerLb, inStock, image } = req.body
+    const { name, description, pricePerLb, inStock, featured, seasonal, category, image } = req.body
     if (!name) return res.status(400).json({ error: 'Name is required' })
 
     const newItem = {
@@ -34,7 +71,10 @@ export default (async () => {
       description: description || '',
       pricePerLb: parseFloat(pricePerLb || 0),
       inStock: inStock ?? true,
-      image: image || ''
+      featured: featured ?? false,
+      seasonal: seasonal ?? false,
+      category: category || 'fish',
+      image: image || '/images/OIP.webp'
     }
 
     db.data.items.push(newItem)
