@@ -7,10 +7,11 @@
           <span class="brand-tagline">Fresh from the Bayou</span>
         </div>
         <div class="nav-links">
-          <a href="#hero" class="nav-link">Home</a>
+          <router-link to="/" class="nav-link">Home</router-link>
           <a href="#about" class="nav-link">About</a>
           <a href="#catch" class="nav-link">Fresh Catch</a>
           <a href="#contact" class="nav-link">Contact</a>
+          <router-link to="/admin" class="nav-link admin-link">⚙️ Admin</router-link>
           <a href="tel:+13379237607" class="btn btn-primary nav-cta">Call Now</a>
         </div>
         <button class="mobile-menu-toggle" @click="toggleMobileMenu">
@@ -22,10 +23,7 @@
     </nav>
 
     <main>
-      <HeroSection />
-      <AboutSection />
-      <CatchGrid />
-      <ContactSection />
+      <router-view />
     </main>
     
     <Footer />
@@ -34,10 +32,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import HeroSection from './components/HeroSection.vue'
-import AboutSection from './components/AboutSection.vue'
-import CatchGrid from './components/CatchGrid.vue'
-import ContactSection from './components/ContactSection.vue'
 import Footer from './components/Footer.vue'
 
 const mobileMenuOpen = ref(false)
