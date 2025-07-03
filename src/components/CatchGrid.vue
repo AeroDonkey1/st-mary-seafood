@@ -142,7 +142,7 @@ const showOutOfStock = ref(false)
 const fetchCatch = async () => {
   try {
     loading.value = true
-    const res = await fetch('/api/pricing')
+    const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/pricing`)
     const data = await res.json()
     catchList.value = data.items || data
     

@@ -37,7 +37,8 @@ import { ref, onMounted } from 'vue'
 const items = ref([])
 
 const fetchItems = async () => {
-  const res = await fetch('/api/pricing')
+  const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/pricing`)
+
   items.value = await res.json()
 }
 
@@ -50,7 +51,7 @@ const addItem = async () => {
     image: ''
   }
 
-  const res = await fetch('/api/pricing', {
+  const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/pricing`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newItem)
@@ -61,7 +62,7 @@ const addItem = async () => {
 }
 
 const updateItem = async (item) => {
-  await fetch(`/api/pricing/${item.id}`, {
+  await fetch(`${import.meta.env.VITE_API_BASE}/api/pricing/${item.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
@@ -69,7 +70,7 @@ const updateItem = async (item) => {
 }
 
 const removeItem = async (id) => {
-  await fetch(`/api/pricing/${id}`, {
+  await fetch(`${import.meta.env.VITE_API_BASE}/api/pricing/${id}`, {
     method: 'DELETE'
   })
   items.value = items.value.filter(i => i.id !== id)
