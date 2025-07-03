@@ -1,0 +1,70 @@
+{
+  "items": [
+    {
+      "id": "crawfish-001",
+      "name": "Live Crawfish",
+      "description": "Fresh Louisiana crawfish, caught daily from local bayous. Perfect for boils and traditional Cajun cooking.",
+      "pricePerLb": 2.49,
+      "inStock": true,
+      "image": "/images/images-33.webp",
+      "category": "crawfish",
+      "seasonal": true,
+      "featured": true
+    },
+    {
+      "id": "crab-001",
+      "name": "Softshell Crabs",
+      "description": "Premium softshell crabs, cleaned and ready to cook. A Louisiana delicacy at its finest.",
+      "pricePerLb": 12.99,
+      "inStock": true,
+      "image": "/images/images-35.webp",
+      "category": "crab",
+      "seasonal": false,
+      "featured": true
+    },
+    {
+      "id": "catfish-001",
+      "name": "Fresh Catfish Fillets",
+      "description": "Farm-raised catfish fillets, cleaned and ready for frying. Mild flavor and flaky texture.",
+      "pricePerLb": 6.99,
+      "inStock": true,
+      "image": "/images/images-37.webp",
+      "category": "fish",
+      "seasonal": false,
+      "featured": false
+    },
+    {
+      "id": "shrimp-001",
+      "name": "Gulf Shrimp",
+      "description": "Wild-caught Gulf shrimp, peeled and deveined. Sweet and succulent from Louisiana waters.",
+      "pricePerLb": 8.99,
+      "inStock": true,
+      "image": "/images/OIP.webp",
+      "category": "shrimp",
+      "seasonal": false,
+      "featured": true
+    },
+    {
+      "id": "crab-002",
+      "name": "Blue Crabs",
+      "description": "Live blue crabs from Louisiana coastal waters. Perfect for crab boils and gumbo.",
+      "pricePerLb": 4.99,
+      "inStock": true,
+      "image": "/images/461744849_2522438907950928_8470721216314520031_n-1-e1744445888387.webp",
+      "category": "crab",
+      "seasonal": false,
+      "featured": false
+    },
+    {
+      "id": "oyster-001",
+      "name": "Fresh Oysters",
+      "description": "Freshly shucked Louisiana oysters, perfect for raw consumption or cooking.",
+      "pricePerLb": 9.99,
+      "inStock": false,
+      "image": "/images/OIP.webp",
+      "category": "oyster",
+      "seasonal": true,
+      "featured": false
+    }
+  ]
+}
