@@ -9,7 +9,7 @@ app.use(express.json())
 // Admin credentials from environment variables
 const ADMIN_CREDENTIALS = {
   username: process.env.ADMIN_USERNAME || 'stmary',
-  password: process.env.ADMIN_PASSWORD || 'seafood2025!'
+  password: process.env.ADMIN_PASSWORD || 'StSeaf00d2025!'
 }
 
 // Authentication endpoint
